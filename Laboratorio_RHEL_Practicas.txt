@@ -1,0 +1,68 @@
+LABORATORIO RED HAT ENTERPRISE LINUX 10.2
+
+PRACTICA 1: INSTALACION DEL SISTEMA OPERATIVO RED HAT
+
+1.  Se creó una máquina virtual con recursos suficientes para ejecutar
+    RHEL.
+2.  Se configuró la tarjeta de red de la máquina virtual en modo Bridge
+    (Adaptador Puente).
+3.  Se realizó la instalación de Red Hat Enterprise Linux 10.2.
+
+PRACTICA 2: CONFIGURACION DE PARAMETROS DE RED
+
+Identificación de interfaz y conexiones: - ip addr show - nmcli device
+status - nmcli connection show
+
+Configuración mediante nmcli: DHCP: - sudo nmcli connection modify
+ens160 ipv4.method auto - sudo nmcli connection up ens160
+
+IP estática: - sudo nmcli connection modify ens160 ipv4.method manual -
+sudo nmcli connection modify ens160 ipv4.addresses 192.168.1.50/24 -
+sudo nmcli connection modify ens160 ipv4.gateway 192.168.1.1
+
+DNS Google: - sudo nmcli connection modify ens160 ipv4.dns “8.8.8.8
+8.8.4.4”
+
+Configuración mediante nmtui: - sudo nmtui - Configuración IPv4
+automática (DHCP). - Configuración IPv4 manual (IP estática). -
+Configuración de DNS.
+
+Configuración mediante perfiles de NetworkManager: Archivo: -
+/etc/NetworkManager/system-connections/ens160.nmconnection
+
+Configuración mediante nmcli edit: - sudo nmcli connection edit ens160
+
+Pruebas: - ping -c 4 8.8.8.8 - ping -c 4 google.com
+
+PRACTICA 3: GESTION DE USUARIOS Y GRUPOS
+
+Crear usuario y agregarlo a wheel: - sudo useradd drosso - sudo passwd
+drosso - sudo usermod -aG wheel drosso
+
+Verificación: - id drosso - groups drosso
+
+Crear grupo guest y usuario: - sudo groupadd guest - sudo useradd
+guestuser - sudo passwd guestuser - sudo usermod -aG guest guestuser
+
+Verificación: - id guestuser - groups guestuser
+
+Eliminar usuario y grupo: - sudo userdel -r guestuser - sudo groupdel
+guest
+
+PRACTICA 4: GESTION DE PERMISOS DE ARCHIVOS
+
+Crear carpeta y archivo: - mkdir materia - cd materia - vi
+estudiante.txt
+
+Contenido: - Nombre - Matrícula
+
+Permisos para propietario: - chmod 700 estudiante.txt
+
+Permisos para grupo: - chmod 070 estudiante.txt
+
+Crear copia: - cd .. - mkdir materia2 - cp materia/estudiante.txt
+materia2/
+
+Eliminar carpeta y archivo: - rm -r materia
+
+Verificación: - ls -l - cat estudiante.txt - ls materia2
