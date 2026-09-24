@@ -3,7 +3,7 @@ LABORATORIO RED HAT ENTERPRISE LINUX 10.2
 PRACTICA 1: INSTALACION DEL SISTEMA OPERATIVO RED HAT
 
 1.  Se creó una máquina virtual con recursos suficientes para ejecutar
-    RHEL.
+    RHEL. 4GB RAM, 4 CPU, 30GB Disk
 2.  Se configuró la tarjeta de red de la máquina virtual en modo Bridge
     (Adaptador Puente).
 3.  Se realizó la instalación de Red Hat Enterprise Linux 10.2.
